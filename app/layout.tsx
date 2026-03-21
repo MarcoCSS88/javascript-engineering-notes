@@ -30,7 +30,12 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
                 >
                   Home
                 </Link>
-                <p className="text-gray-600 hover:text-black text-sm">About</p>
+                <Link
+                  href="/about"
+                  className="text-gray-600 hover:text-black text-sm"
+                >
+                  About
+                </Link>
               </div>
             </nav>
 
