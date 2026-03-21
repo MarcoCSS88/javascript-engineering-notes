@@ -7,8 +7,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// TODO: Posso utilizzare readFile senza l'await ??
-
 const Page: React.FC<PageProps> = async ({ params }) => {
   const { slug } = await params;
 
