@@ -23,7 +23,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   const html = marked(fileContent);
 
   return (
-    <div className="prose prose-neutral max-w-none">
+    <div className="prose prose-neutral prose-lg leading-relaxed prose-headings:font-semibold prose-h1:text-3xl prose-a:no-underline hover:prose-a:underline prose-p:mt-4 prose-h2:mt-10">
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
