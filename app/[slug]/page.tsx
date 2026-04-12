@@ -2,6 +2,7 @@ import React from "react";
 import { readFile } from "fs/promises";
 import path from "path";
 import { marked } from "marked";
+import matter from "gray-matter";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -20,7 +21,9 @@ const Page: React.FC<PageProps> = async ({ params }) => {
     fileContent = await readFile(filePath, "utf8");
   }
 
-  const html = marked(fileContent);
+  //const html = marked(fileContent);
+  const { content } = matter(fileContent);
+  const html = marked(content);
 
   return (
     <div className="prose prose-neutral prose-lg leading-relaxed prose-headings:font-semibold prose-h1:text-3xl prose-a:no-underline hover:prose-a:underline prose-p:mt-4 prose-h2:mt-10">
