@@ -4,7 +4,7 @@ import { readdir, readFile } from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 
-async function getPosts() {
+const getPosts = async () => {
   const dir = path.join(process.cwd(), "content/posts");
   const files = await readdir(dir);
 
@@ -12,7 +12,6 @@ async function getPosts() {
     files.map(async (file) => {
       const filePath = path.join(dir, file);
       const content = await readFile(filePath, "utf8");
-
       const { data } = matter(content);
 
       return {
@@ -25,7 +24,7 @@ async function getPosts() {
   );
 
   return posts;
-}
+};
 
 const Home = async () => {
   const posts = await getPosts();
