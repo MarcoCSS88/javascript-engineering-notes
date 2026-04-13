@@ -2,8 +2,8 @@
 
 ## High Priority
 
-- [ ] About page style
-- [ ] Create the first post about "Closures"
+- [x] About page style
+- [x] Create the first post about "Closures"
 
 ## Medium Priority
 
@@ -12,5 +12,8 @@
 ## Low Priority
 
 - [ ] Complete the ROADMAP file
+- [ ] Sort posts by date
+- [ ] Improve single post page layout
+- [ ] Implement tags system
 
 ## Technical Debt
