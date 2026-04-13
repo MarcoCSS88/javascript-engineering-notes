@@ -21,7 +21,6 @@ const Page: React.FC<PageProps> = async ({ params }) => {
     fileContent = await readFile(filePath, "utf8");
   }
 
-  //const html = marked(fileContent);
   const { content } = matter(fileContent);
   const html = marked(content);
 

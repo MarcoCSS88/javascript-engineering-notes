@@ -7,7 +7,7 @@
 
 ## Medium Priority
 
-- [ ] Investigate whether readFile can be used without await or if async handling is required
+- [x] Confirmed readFile must be used with async/await in Next.js server components
 
 ## Low Priority
 
