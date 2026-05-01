@@ -3,6 +3,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { marked } from "marked";
 import matter from "gray-matter";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -11,18 +12,27 @@ interface PageProps {
 const Page: React.FC<PageProps> = async ({ params }) => {
   const { slug } = await params;
 
-  let filePath = path.join(process.cwd(), "content/pages", `${slug}.md`);
-  let fileContent: string;
+  let fileContent: string | null = null;
+
+  const pagePath = path.join(process.cwd(), "content/pages", `${slug}.md`);
+  const postPath = path.join(process.cwd(), "content/posts", `${slug}.md`);
 
   try {
-    fileContent = await readFile(filePath, "utf8");
+    fileContent = await readFile(pagePath, "utf8");
   } catch {
-    filePath = path.join(process.cwd(), "content/posts", `${slug}.md`);
-    fileContent = await readFile(filePath, "utf8");
+    try {
+      fileContent = await readFile(postPath, "utf8");
+    } catch {
+      notFound();
+    }
+  }
+
+  if (!fileContent) {
+    notFound();
   }
 
   const { content } = matter(fileContent);
-  const html = marked(content);
+  const html = await marked(content);
 
   return (
     <div className="prose prose-neutral prose-lg leading-relaxed prose-headings:font-semibold prose-h1:text-3xl prose-a:no-underline hover:prose-a:underline prose-p:mt-4 prose-h2:mt-10">

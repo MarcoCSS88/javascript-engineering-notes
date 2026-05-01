@@ -32,15 +32,15 @@ const Home = async () => {
   return (
     <div className="flex flex-col gap-10">
       {posts.map((post) => (
-        <Link key={post.slug} href={`/${post.slug}`}>
-          <article>
+        <article key={post.slug}>
+          <Link href={`/${post.slug}`}>
             <h2 className="text-xl font-semibold hover:underline cursor-pointer">
               {post.title}
             </h2>
-            <p className="text-sm text-gray-500 mt-1">{post.date}</p>
-            <p className="text-gray-700 mt-2">{post.description}</p>
-          </article>
-        </Link>
+          </Link>
+          <p className="text-sm text-gray-500 mt-1">{post.date}</p>
+          <p className="text-gray-700 mt-2">{post.description}</p>
+        </article>
       ))}
     </div>
   );

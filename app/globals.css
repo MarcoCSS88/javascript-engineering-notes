@@ -2,3 +2,7 @@
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+html {
+  scrollbar-gutter: stable;
+}
