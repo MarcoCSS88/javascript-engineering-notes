@@ -19,7 +19,6 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         <div className="min-h-screen px-6">
           <div className="w-full max-w-3xl mx-auto">
             <Navbar />
-
             <main className="py-10">{children}</main>
           </div>
         </div>
